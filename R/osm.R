@@ -238,9 +238,9 @@ openmap <- function(upperLeft,lowerRight,zoom=NULL,type=c("osm","osm-bw","maptoo
 
 #' }
 plot.OpenStreetMap <- function(x,y=NULL,add=FALSE,removeMargin=TRUE, ...){
+	mar <- par("mar")
 	if(add==FALSE){
 		plot.new()
-		mar <- par("mar")
 		if(removeMargin)
 			par(mar=c(0,0,0,0))
 		plot.window(xlim=c(x$bbox$p1[1],x$bbox$p2[1]),ylim=c(x$bbox$p2[2],x$bbox$p1[2]) ,
