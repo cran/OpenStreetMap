@@ -1,6 +1,6 @@
 \name{projectMercator}
 \alias{projectMercator}
-\title{maps long lat values to the open street map mercator projection}
+\title{Maps long lat values to the open street map mercator projection}
 \usage{
   projectMercator(lat, long, drop = TRUE)
 }
@@ -12,7 +12,7 @@
   \item{drop}{drop to lowest dimension}
 }
 \description{
-  maps long lat values to the open street map mercator
+  Maps long lat values to the open street map mercator
   projection
 }
 

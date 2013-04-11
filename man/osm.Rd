@@ -1,10 +1,10 @@
 \name{osm}
 \alias{osm}
-\title{open street map (and google) mercator projection}
+\title{Open street map (and google) mercator projection}
 \usage{
   osm()
 }
 \description{
-  open street map (and google) mercator projection
+  Open street map (and google) mercator projection
 }
 

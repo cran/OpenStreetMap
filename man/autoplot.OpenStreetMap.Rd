@@ -20,11 +20,10 @@
 \dontrun{
 require(maps)
 require(ggplot2)
-require(rgdal)
 gpclibPermit()
 
 mp <- openmap(c(53.38332836757155,-130.517578125),
-		c(15.792253570362446,-67.939453125),4,'osm')
+		c(15.792253570362446,-67.939453125),4,'stamen-watercolor')
 mp_bing <- openmap(c(53.38332836757155,-130.517578125),
 		c(15.792253570362446,-67.939453125),4,'bing')
 states_map <- map_data("state")

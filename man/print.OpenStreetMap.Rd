@@ -1,6 +1,6 @@
 \name{print.OpenStreetMap}
 \alias{print.OpenStreetMap}
-\title{print map}
+\title{Print map}
 \usage{
   \method{print}{OpenStreetMap} (x, ...)
 }
@@ -10,6 +10,6 @@
   \item{...}{ignored}
 }
 \description{
-  print map
+  Print map
 }
 

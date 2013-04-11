@@ -1,0 +1,14 @@
+\name{launchMapHelper}
+\alias{launchMapHelper}
+\title{Launches a Java helper GUI.}
+\usage{
+  launchMapHelper()
+}
+\description{
+  Launches a Java helper GUI.
+}
+\details{
+  note for Mac OS X users: On the mac this can only be run
+  from a java console such as JGR.
+}
+

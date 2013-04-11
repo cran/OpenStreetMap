@@ -1,6 +1,6 @@
 \name{osmtile}
 \alias{osmtile}
-\title{get an open street map tile. tpe can be "osm" or "bing"}
+\title{Get an open street map tile.}
 \usage{
   osmtile(x, y, zoom, type = "osm")
 }
@@ -11,13 +11,12 @@
 
   \item{zoom}{zoom level}
 
-  \item{type}{osm for mapnik open street map, or 'bing' for
-  bing aerial}
+  \item{type}{the map type (see getMapInfo)}
 }
 \value{
   a tile
 }
 \description{
-  get an open street map tile. tpe can be "osm" or "bing"
+  Get an open street map tile.
 }
 
