@@ -1,7 +1,3 @@
-# TODO: Add comment
-# 
-# Author: ianfellows
-###############################################################################
 
 #' Open street map (and google) mercator projection
 osm <- function(){
@@ -108,16 +104,12 @@ plot.osmtile <- function(x, y=NULL, add=TRUE, raster=TRUE, ...){
 #'	plot(map)
 #'}
 #'
-#'#cloudMade has thousands of map types, and requires a key.
-#'#A default key is provided with the package, but you
-#'#should get your own at http://ww.cloudmade.com and
-#'#apply it with:
-#'#setCloudMadeKey("< your key >")
 #'
-#'#plot Korea with a cloudmade map and ggplot2.
+#'#plot Korea with ggplot2.
+#'library(ggplot2)
 #'map <- openmap(c(43.46886761482925,119.94873046875),
 #'		c(33.22949814144951,133.9892578125),
-#'		minNumTiles=4,type="cloudmade-1960")
+#'		minNumTiles=4)
 #'autoplot(map)
 #' }
 openmap <- function(upperLeft,lowerRight,zoom=NULL,type=c("osm","osm-bw","maptoolkit-topo",
@@ -184,6 +176,7 @@ openmap <- function(upperLeft,lowerRight,zoom=NULL,type=c("osm","osm-bw","maptoo
 #' #	plot using native mercator coordinates,
 #' #	transforming the data where needed
 #' #
+#'library(sp)
 #'m <- c(25.7738889,-80.1938889)
 #'j <- c(58.3019444,-134.4197222)
 #'miami <- projectMercator(25.7738889,-80.1938889)
@@ -254,7 +247,6 @@ plot.OpenStreetMap <- function(x,y=NULL,add=FALSE,removeMargin=TRUE, ...){
 
 
 
-
 #' Create a RasterLayer from a tile
 #' @param x an osmtile
 #' @param ... unused
@@ -282,6 +274,7 @@ setMethod("raster","osmtile",function(x, ...){
 #' @param x an OpenStreetMap
 #' @param ... unused
 #' @examples \dontrun{
+#' library(raster)
 #' longBeachHarbor <- openmap(c(33.760525217369974,-118.22052955627441),
 #' 		c(33.73290566922855,-118.17521095275879),14,'bing')
 #' ras <- raster(longBeachHarbor)
@@ -337,6 +330,7 @@ setMethod("raster","OpenStreetMap",function(x, ...){
 #'				"+proj=lcc +lat_1=33 +lat_2=45 +lat_0=39 +lon_0=-96")
 #'plot(map_llc,removeMargin=TRUE)
 #'#add choropleth
+#'library(sp)
 #'data(states)
 #'st_llc <- spTransform(states,CRS("+proj=lcc +lat_1=33 +lat_2=45 +lat_0=39 +lon_0=-96"))
 #'plot(st_llc,add=T,col=heat.colors(48,.4)[slot(st_llc,"data")[["ORDER_ADM"]]])
@@ -416,7 +410,7 @@ launchMapHelper <- function(){
 }
 
 #' Sets the user identification key for cloudmade.com
-#' @param key The key. Obtain a free map key at http://www.cloudmade.com
+#' @param key The key. Obtain a (not-)free map key at http://www.cloudmade.com
 setCloudMadeKey <- function(key){
 	if(!missing(key)){
 		J("edu.cens.spatial.RTileController")$setCloudMadeKey(as.character(key))

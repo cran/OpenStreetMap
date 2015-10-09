@@ -1,7 +1,3 @@
-# TODO: Add comment
-# 
-# Author: ianfellows
-###############################################################################
 
 
 #' Plots an open street map tile using ggplot2
@@ -10,7 +6,6 @@
 #' @param ... not used
 #' @method autoplot osmtile
 autoplot.osmtile <- function(data,plot=FALSE,...){
-	library(ggplot2)
 	a <- b <- NULL
 	x <- data
 	p1 <- x$bbox$p1
@@ -19,14 +14,14 @@ autoplot.osmtile <- function(data,plot=FALSE,...){
 	xres <- x$xres
 	rast <- as.raster(matrix(x$colorData, nrow=x$xres, 
 					byrow = TRUE))
-	annot <- annotation_raster(rast,
+	annot <- ggplot2::annotation_raster(rast,
 			p1[1] - .5*abs(x$bbox$p1[1]-x$bbox$p2[1])/yres,
 			p2[1] + .5*abs(x$bbox$p1[1]-x$bbox$p2[1])/yres,
 			p2[2] - .5*abs(x$bbox$p1[2]-x$bbox$p2[2])/xres,
 			p1[2] + .5*abs(x$bbox$p1[2]-x$bbox$p2[2])/xres)
 	if(plot)
-		ggplot(aes(x=a,y=b),data=data.frame(a=p1[1],b=p1[2])) + 
-				annot + expand_limits(x = c(p1[1],p2[1]),
+		ggplot2::ggplot(ggplot2::aes(x=a,y=b),data=data.frame(a=p1[1],b=p1[2])) + 
+				annot + ggplot2::expand_limits(x = c(p1[1],p2[1]),
 						y=c(p2[2],p1[2]))
 	else
 		annot
@@ -39,7 +34,6 @@ autoplot.osmtile <- function(data,plot=FALSE,...){
 #' @examples \dontrun{
 #' require(maps)
 #' require(ggplot2)
-#' gpclibPermit()
 #' 
 #' mp <- openmap(c(53.38332836757155,-130.517578125),
 #' 		c(15.792253570362446,-67.939453125),4,'stamen-watercolor')
@@ -62,21 +56,20 @@ autoplot.osmtile <- function(data,plot=FALSE,...){
 #' @method autoplot OpenStreetMap
 autoplot.OpenStreetMap <- function(data, expand=TRUE, ...){
 	x <- y <- NULL
-	library(ggplot2)
 	x <- data
 	p1 <- x$bbox$p1
 	p2 <- x$bbox$p2
-	p <- ggplot(aes(x=x,y=y),data=data.frame(x=(p1[1]+p2[1])/2,
+	p <- ggplot2::ggplot(ggplot2::aes(x=x,y=y),data=data.frame(x=(p1[1]+p2[1])/2,
 					y=(p1[2]+p2[2])/2))
 	if(expand)
-		p <- p + expand_limits(x = c(p1[1],p2[1]),
+		p <- p + ggplot2::expand_limits(x = c(p1[1],p2[1]),
 						y=c(p2[2],p1[2])) + 
-				scale_x_continuous(expand=c(0,0)) + 
-				scale_y_continuous(expand=c(0,0))
+				ggplot2::scale_x_continuous(expand=c(0,0)) + 
+				ggplot2::scale_y_continuous(expand=c(0,0))
 	for(tile in x$tiles){
 		p <- p + autoplot.osmtile(tile)
 	}
-	p + coord_equal()
+	p + ggplot2::coord_equal()
 }
 
 
